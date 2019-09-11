@@ -1,0 +1,23 @@
+## YAML Template.
+---
+spring:
+    application:
+        name: API-GATEWAY
+
+eureka:
+  instance:
+     preferIpAddress: true
+  client:
+     registerWithEureka: true
+     fetchRegistry: true
+     serviceUrl:
+       defaultZone: ${EUREKA_URI:http://127.0.0.1:8761/eureka/} 
+
+zuul:
+  routes:
+    product:
+      path: /product-service*/**
+      stripPrefix: false
+
+server:
+   port: 8080
